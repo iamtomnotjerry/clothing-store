@@ -18,7 +18,8 @@ import {
   doc,
   getDoc,
   setDoc,
-  Firestore
+  collection,
+  writeBatch
 } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
@@ -45,6 +46,12 @@ export const signInWithGooglePopUp = () => signInWithPopup(auth, googleProvider)
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
+
+export const addCollectionAndDocuments =  async(collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey)
+   
+} 
+
 
 export const createUserDocumentFromAuth = async (userAuth, additionlInformation = {}) => {
   const userDocRef = doc(db, 'users', userAuth.uid);
